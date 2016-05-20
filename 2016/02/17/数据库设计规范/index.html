@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据库设计规范 | 三流程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="来自网上流传出大厨网的数据库设计规范，感觉还不错，留下了以供参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库设计规范">
+<meta property="og:url" content="http://lizhennet.github.io/2016/02/17/数据库设计规范/index.html">
+<meta property="og:site_name" content="三流程序猿">
+<meta property="og:description" content="来自网上流传出大厨网的数据库设计规范，感觉还不错，留下了以供参考">
+<meta property="og:updated_time" content="2016-05-15T08:24:43.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库设计规范">
+<meta name="twitter:description" content="来自网上流传出大厨网的数据库设计规范，感觉还不错，留下了以供参考">
+  
+    <link rel="alternative" href="/atom.xml" title="三流程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">三流程序猿</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">三流程序猿</p>
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Quartz-NET/" style="font-size: 13.33px;">Quartz.NET</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 20px;">面向对象</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">三流程序猿</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">三流程序猿</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">三流程序猿</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">三流程序猿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-数据库设计规范" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/17/数据库设计规范/" class="article-date">
+      <time datetime="2016-02-17T03:22:20.000Z" itemprop="datePublished">2016-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库设计规范
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规范/">规范</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>来自网上流传出大厨网的数据库设计规范，感觉还不错，留下了以供参考<br><a id="more"></a></p>
+<h1 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h1><hr>
+<h2 id="一、数据库设计原则"><a href="#一、数据库设计原则" class="headerlink" title="一、数据库设计原则"></a>一、数据库设计原则</h2><ul>
+<li>1) 范式要求<br>通俗地理解三个范式，对于数据库设计大有好处。在数据库设计中，为了更好地应用三个范式，就必须通俗地理解三个范式(通俗地理解是够用的理解，并不是最科学最准确的理解)： <ul>
+<li>第一范式：1NF是对属性的原子性约束，要求属性具有原子性，不可再分解，即没有表中表； </li>
+<li>第二范式：2NF是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性； </li>
+<li>第三范式：3NF是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。<br>没有冗余的数据库设计可以做到。但是，没有冗余的数据库未必是最好的数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余。</li>
+</ul>
+</li>
+<li>2)每个表必须有主键<br>每个表必须有主键，最好是设计一个ID字段作为主键，尽量不使用复合主键。</li>
+<li>3)每个业务表都必须有时间戳字段和状态字段<br>每个涉及到与业务相关的表，都必须有时间戳字段:created_time、updated_time和状态字段:status</li>
+<li>4)字段类型的使用<br>  如果项目或软件需要考虑支持多种数据库，那么，在建数据库表时，字段类型尽量要使用各个数据库都通用且含义相同的类型，如：CHAR，VARCHAR，DECIMAL/NUMBER/NUMERIC等。尽量少使用INT，DATE，TIMESTAMP等字段类型。对于时间类型的字段，可以用NUMERIC来存储，存储的值为时间的毫秒数(用java的System.currentTimeMillis())。</li>
+</ul>
+<h2 id="二、数据库设计字符规范"><a href="#二、数据库设计字符规范" class="headerlink" title="二、数据库设计字符规范"></a>二、数据库设计字符规范</h2><p>采用26 个英文字母(区分大小写)和0-9 这十个自然数,加上下划线’_’组成,共63 个字符.不能出现其他字符(注释除外).<br>注意事项:</p>
+<ul>
+<li>1) 以上命名都不得超过30 个字符的系统限制.变量名的长度限制为29(不包括标识字符@).</li>
+<li>2) 数据对象、变量的命名都采用英文字符,禁止使用中文命名.绝对不要在对象名的字符之间留空格.</li>
+<li>3) 小心保留词,要保证你的字段名没有和保留词、数据库系统或者常用访问方法冲突.</li>
+<li>4) 保持字段名和类型的一致性,在命名字段并为其指定数据类型的时候一定要保证一致性.假如数据类型在一个表里是整数,那在另一个表里可就别变成字符型了.</li>
+</ul>
+<h2 id="三、数据库命名规范"><a href="#三、数据库命名规范" class="headerlink" title="三、数据库命名规范"></a>三、数据库命名规范</h2><p>数据库名使用小写英文以及下划线组成.比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_db</span><br><span class="line">snepr</span><br></pre></td></tr></table></figure>
+<p>备份数据库名使用正式库名加上备份时间组成,如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbname_20070403</span><br></pre></td></tr></table></figure>
+<h2 id="四、数据库表命名规范"><a href="#四、数据库表命名规范" class="headerlink" title="四、数据库表命名规范"></a>四、数据库表命名规范</h2><p>数据表名使用小写英文以及下划线组成<br>比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info_user</span><br><span class="line">system_destination</span><br></pre></td></tr></table></figure>
+<p>信息类采用：info_xxx<br>文件类采用：file_xxx<br>关联类采用：inter_xxx<br>备份数据表名使用正式表名加上备份时间组成,如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info_user_20070403</span><br><span class="line">system_destination_20070403</span><br></pre></td></tr></table></figure>
+<h2 id="五、字段命名规范"><a href="#五、字段命名规范" class="headerlink" title="五、字段命名规范"></a>五、字段命名规范</h2><p>字段名称使用单词组合完成,首字母小写,后面单词的首字母大写,最好是带表名前缀.<br>如web_user 表的字段:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user _id</span><br><span class="line">user_name</span><br></pre></td></tr></table></figure>
+<p>如果表名过长，可以取表名的前5 个字母。如果表名为多个单词组合，可以取前一个单词，外加后续其它单词的首字母作为字段名。<br>表与表之间的相关联字段要用统一名称,如info_user 表里面的userId 和group 表里面的userId 相对应；业务流水号统一采用：表名_seq；</p>
+<h2 id="六、外键命名规范"><a href="#六、外键命名规范" class="headerlink" title="六、外键命名规范"></a>六、外键命名规范</h2><p>外键名称为FK<em>表名A</em>表名B_关联字段名；<br>其中表名和关联字段名如果过长，可以取表名、关联字段名的前5 个字母。<br>如果表名、关联字段为多个单词组合，可以取前一个单词，外加后续其它单词的<br>首字母作为字段名。<br>如：FK_user_token_user_phnum；</p>
+<h2 id="七、字段类型规范"><a href="#七、字段类型规范" class="headerlink" title="七、字段类型规范"></a>七、字段类型规范</h2><p>规则:用尽量少的存储空间来存数一个字段的数据.<br>比如能用int 的就不用char 或者varchar<br>能用varchar(20)的就不用varchar(255)<br>时间戳字段尽量用int 型，如created:表示从’1970-01-01 08:00:00’开始的int 秒数，采用英文单词的过去式；gmtCreated:表示datetime 类型的时间，<br>即形如’1980-01-01 00:00:00’的时间串，Java 中对应的类型为Timestamp</p>
+<h2 id="八、索引使用原则："><a href="#八、索引使用原则：" class="headerlink" title="八、索引使用原则："></a>八、索引使用原则：</h2><ul>
+<li>1) 逻辑主键使用唯一的成组索引,对系统键(作为存储过程)采用唯一的非成组索引,对任何外键列采用非成组索引.考虑数据库的空间有多大,表如何进行访问,还有这些访问是否主要用作读写.</li>
+<li>2) 大多数数据库都索引自动创建的主键字段,但是可别忘了索引外键,它们也是经常使用的键,比如运行查询显示主表和所有关联表的某条记录就用得上.</li>
+<li>3) 不要索引blob/text 等字段,不要索引大型字段(有很多字符),这样作会让索引占用太多的存储空间.</li>
+<li>4) 不要索引常用的小型表<br>不要为小型数据表设置任何键,假如它们经常有插入和删除操作就更别这样作了.对这些插入和删除操作的索引维护可能比扫描表空间消耗更多的时间.</li>
+</ul>
+<h2 id="九、sql-语句规范"><a href="#九、sql-语句规范" class="headerlink" title="九、sql 语句规范"></a>九、sql 语句规范</h2><p>所有 sql 关键词全部大写,比如SELECT,UPDATE,FROM,ORDER,BY 等,表名与字段名不需要大写<br>如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) FROM cdb_members WHERE userName= &apos;aeolus&apos;;</span><br></pre></td></tr></table></figure>
+<h2 id="十、其他设计技巧"><a href="#十、其他设计技巧" class="headerlink" title="十、其他设计技巧"></a>十、其他设计技巧</h2><ul>
+<li>1) 避免使用触发器<br>触发器的功能通常可以用其他方式实现.在调试程序时触发器可能成为干扰.<br>假如你确实需要采用触发器,你最好集中对它文档化.</li>
+<li>2) 避免使用存储过程</li>
+<li>3) 使用常用英语(或者其他任何语言)而不要使用拼音首字母缩写</li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/02/17/数据库设计规范/">数据库设计规范</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 三流程序猿 的个人博客">三流程序猿</a></p>
+        <p><span>发布时间:</span>2016年02月17日 - 11时22分</p>
+        <p><span>最后更新:</span>2016年05月15日 - 16时24分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/02/17/数据库设计规范/" title="数据库设计规范">http://lizhennet.github.io/2016/02/17/数据库设计规范/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/02/17/数据库设计规范/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/02/17/JavaScript的this关键字/">
+                    JavaScript的this关键字
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库设计规范"><span class="toc-number">1.</span> <span class="toc-text">数据库设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、数据库设计原则"><span class="toc-number">1.1.</span> <span class="toc-text">一、数据库设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数据库设计字符规范"><span class="toc-number">1.2.</span> <span class="toc-text">二、数据库设计字符规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数据库命名规范"><span class="toc-number">1.3.</span> <span class="toc-text">三、数据库命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、数据库表命名规范"><span class="toc-number">1.4.</span> <span class="toc-text">四、数据库表命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、字段命名规范"><span class="toc-number">1.5.</span> <span class="toc-text">五、字段命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、外键命名规范"><span class="toc-number">1.6.</span> <span class="toc-text">六、外键命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、字段类型规范"><span class="toc-number">1.7.</span> <span class="toc-text">七、字段类型规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、索引使用原则："><span class="toc-number">1.8.</span> <span class="toc-text">八、索引使用原则：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、sql-语句规范"><span class="toc-number">1.9.</span> <span class="toc-text">九、sql 语句规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、其他设计技巧"><span class="toc-number">1.10.</span> <span class="toc-text">十、其他设计技巧</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/02/17/数据库设计规范/" data-title="数据库设计规范" data-url="http://lizhennet.github.io/2016/02/17/数据库设计规范/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lizhenhexo"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src ='http://7xpy0e.com1.z0.glb.clouddn.com/embedmini.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/02/17/JavaScript的this关键字/" title="上一篇: JavaScript的this关键字">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/design-pattern-behavioral-pattern2/">设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/design-pattern-behavioral-pattern/">设计模式-行为型模式(模板方法模式、命令模式、迭代器模式、观察者模式、中介者模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/design-pattern-structured-pattern2/">设计模式-结构型模式2(享元、桥接、装饰)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/get-started-with-Docker/">Docker入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/">Quartz.NET中文开发指南(二):Jobs And Triggers</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/">Quartz.NET中文开发指南(一):快速使用Quartz.NET</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/design-pattern-structured-pattern/">设计模式-结构型模式(适配器、组合、代理、外观)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/design-pattern-creational-pattern/">设计模式-创建型模式(单例、工厂、创建者、原型)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/design-pattern-solid/">设计模式六大原则-SOLID</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/Lagouspider/">程序员拉钩找工作的另类姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/22/oop-in-javascript/">JavaScript面向对象编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/JavaScript的原型链/">JavaScript的原型链</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/JavaScript的this关键字/">JavaScript的this关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/数据库设计规范/">数据库设计规范</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 三流程序猿
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >全站访问数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">文章阅读数: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <style>
+        body {
+          background: lightgray;
+        }
+        #container .left-col {
+          background: white;
+        }
+        .article-inner {
+          background: white;
+          margin-bottom: 1em;
+        }
+        .post-nav-button {
+          background: #ececec;
+        }
+        #header .header-nav .social #GitHub {
+          background-color: #bfd3ec;
+        }
+        #post-nav-button a {
+          background: rgba(215, 216, 215, .2);
+        }
+        .post-list {
+          background: white;
+        }
+    </style>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

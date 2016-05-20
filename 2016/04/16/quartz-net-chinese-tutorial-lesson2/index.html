@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Quartz.NET中文开发指南(二):Jobs And Triggers | 三流程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quartz.NET中文开发指南 Lesson 2:Jobs And Triggers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quartz.NET中文开发指南(二):Jobs And Triggers">
+<meta property="og:url" content="http://lizhennet.github.io/2016/04/16/quartz-net-chinese-tutorial-lesson2/index.html">
+<meta property="og:site_name" content="三流程序猿">
+<meta property="og:description" content="Quartz.NET中文开发指南 Lesson 2:Jobs And Triggers">
+<meta property="og:updated_time" content="2016-05-15T08:24:43.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quartz.NET中文开发指南(二):Jobs And Triggers">
+<meta name="twitter:description" content="Quartz.NET中文开发指南 Lesson 2:Jobs And Triggers">
+  
+    <link rel="alternative" href="/atom.xml" title="三流程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">三流程序猿</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">三流程序猿</p>
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Quartz-NET/" style="font-size: 13.33px;">Quartz.NET</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 20px;">面向对象</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">三流程序猿</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">三流程序猿</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">三流程序猿</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">三流程序猿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-quartz-net-chinese-tutorial-lesson2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/" class="article-date">
+      <time datetime="2016-04-16T10:35:33.000Z" itemprop="datePublished">2016-04-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Quartz.NET中文开发指南(二):Jobs And Triggers
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Quartz-NET/">Quartz.NET</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quartz-NET/">Quartz.NET</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Quartz.NET中文开发指南 Lesson 2:Jobs And Triggers<br><a id="more"></a></p>
+<h2 id="Lesson-2-Jobs-And-Triggers"><a href="#Lesson-2-Jobs-And-Triggers" class="headerlink" title="Lesson 2: Jobs And Triggers"></a>Lesson 2: Jobs And Triggers</h2><h3 id="Quartz-API"><a href="#Quartz-API" class="headerlink" title="Quartz API"></a>Quartz API</h3><p>Quartz 主要的接口和类如下：</p>
+<ul>
+<li>IScheduler-操作scheduler主要的接口</li>
+<li>IJob-组件需要实现该接口才能被scheduler执行</li>
+<li>IJobDetail-用来定义Jobs的实例</li>
+<li>ITrigger-定义Job何时执行的组件</li>
+<li>JobBuilder-用来创建JobDetail实例</li>
+<li>TriggerBuilder-用来创建Trigger实例</li>
+</ul>
+<blockquote>
+<p>为了本教程的可读性 IScheduler and Scheduler, IJob and Job, IJobDetail and JobDetail, ITrigger and Trigger.这些单词是可以相互替代的。  </p>
+</blockquote>
+<p>Scheduler的生命周期是从在SchedulerFactory创建到执行Shutdown()方法，Scheduler一旦被创建就可添加、删除、获取Job和Trigger，<br>也可以执行其他调度操作（例如：暂停Trigger），但是Scheduler在调用Start()方法前不会触发Trigger和执行Job，如Lesson1所示。  </p>
+<p>Quartz提供了“builder”类来声明领域特定语言（DSL,有时也称为”fluent interface”），在这里我们再次给出上一节例子的一小部分：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个Job 绑定HelloJob</span></span><br><span class="line">IJobDetail job = JobBuilder.Create&lt;HelloJob&gt;()</span><br><span class="line">     .WithIdentity(<span class="string">"myJob"</span>, <span class="string">"group1"</span>)</span><br><span class="line">     .Build();</span><br><span class="line"><span class="comment">// 定义一个立即启动的Trigger，启动后每40秒触发一次</span></span><br><span class="line">ITrigger trigger = TriggerBuilder.Create()</span><br><span class="line">      .WithIdentity(<span class="string">"myTrigger"</span>, <span class="string">"group1"</span>)</span><br><span class="line">      .StartNow()</span><br><span class="line">      .WithSimpleSchedule(x =&gt; x</span><br><span class="line">           .WithIntervalInSeconds(<span class="number">40</span>)</span><br><span class="line">           .RepeatForever())</span><br><span class="line">       .Build();</span><br><span class="line">sched.ScheduleJob(job, trigger);</span><br></pre></td></tr></table></figure></p>
+<p>上述代码是创建Job的方式是使用JobBuilder以”fluent interface”形式来创建IJobDetail，<br>同样，创建trigger也是使用TriggerBuilder以”fluent interface”形式 和trigger类型的扩展方法来创建。<br>调度扩展方法有：</p>
+<ul>
+<li>WithCalendarIntervalSchedule</li>
+<li>WithCronSchedule</li>
+<li>WithDailyTimeIntervalSchedule</li>
+<li>WithSimpleSchedule  </li>
+</ul>
+<p>DateBuilder类包含多种易于创建具体时间点DateTimeOffset实例的方法（例如获取下一个偶数小时，具体例子就是现在为 9:43:27，获取的结果是 10:00:00）。</p>
+<h3 id="Jobs-and-Triggers"><a href="#Jobs-and-Triggers" class="headerlink" title="Jobs and Triggers"></a>Jobs and Triggers</h3><p>Job类就是IJob接口的实现，它只有一个简单的方法。<br>IJob Interface<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Quartz</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IJob</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">void</span> <span class="title">Execute</span>(<span class="params">JobExecutionContext context</span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>当Job的trigger（触发器）被触发，Execute方法就会被scheduler的一个工作线程调用。传入这个方法的JobExecutionContext实例提供了Job的运行时环境：执行Job的Scheduler，触发Job的Trigger，Job的JobDetail对象和一些其他属性。<br>JobDetail对象是在Job添加到 scheduler时，被 Quartz.NET client（你的程序）创建的。它包含了多个Job的属性设置，例如一个用来储存Job实例状态信息的JobDataMap。这是Job实例最基本的定义，我们静载下一节详细讨论。 </p>
+<p>Trigger对象用来触发执行Job.当你想要调度一个job时,你需要一个tigger的实例然后调整他就可以提供你想要的调度方式。触发器也有一个与之相关的JobDataMap，用来传递参数给触发的Job。Quartz 拥有不同的几个触发器类型，但是最常见的两个类型是SimpleTrigger (接口是 ISimpleTrigger) 、 CronTrigger (接口是 ICronTrigger)。   </p>
+<p>SimpleTrigger常常被用于执行”一次性”的操作，或者你需要执行一个Job在特定的时间，执行N次，每次执行延迟为T。CronTrigger常常用于执行基于日程表的任务，例如：”每周五中午”或者”每月第十天的10:15”。   </p>
+<p>为什么分开Job和Trigger?许多任务调度框架并没有把job和trigger分开。许多定时调度程序只是将“job”简单地定义为一个带有一些小任务标识的执行时间。还有一些框架定义Job更像 Quartz Job和Trigger的结合。<br>当我们开发Quartz时，我们决定将调度程序和在其上面执行的Job分离开来，这样定义在我们看来是十分有利的。    </p>
+<p>例如，Job 可以独立于trigger单独的创建和存储，同一个Job可以与多个不同的Trigger绑定。这种松耦合的另一个好处是当Job的Trigger执行完后，Job还会存在scheduler中，当下次执行时，不需要重新创建Job。这种设计还允许在不重新定义一个Job的情况下，更改或者替换Trigger。  </p>
+<h3 id="Identities"><a href="#Identities" class="headerlink" title="Identities"></a>Identities</h3><p>Jobs和Triggers当注册到Quartz的scheduler时，会被给予一个标识key。Jobs和Triggers的Key(JobKey and TriggerKey)允许他们通过分组的方式组织job和trigger。job和trigger的Key在分组中是唯一的，换句话说这个Key就是分组和名字组合成的。你现在对Job和Trigger也有了一定的了解，在 Lesson 3: More About Jobs &amp; JobDetails 和 Lesson 4: More About Triggers，你能学到更多。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/">Quartz.NET中文开发指南(二):Jobs And Triggers</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 三流程序猿 的个人博客">三流程序猿</a></p>
+        <p><span>发布时间:</span>2016年04月16日 - 18时35分</p>
+        <p><span>最后更新:</span>2016年05月15日 - 16时24分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/" title="Quartz.NET中文开发指南(二):Jobs And Triggers">http://lizhennet.github.io/2016/04/16/quartz-net-chinese-tutorial-lesson2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/04/16/quartz-net-chinese-tutorial-lesson2/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/04/27/get-started-with-Docker/">
+                    Docker入门
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/">
+                    Quartz.NET中文开发指南(一):快速使用Quartz.NET
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lesson-2-Jobs-And-Triggers"><span class="toc-number">1.</span> <span class="toc-text">Lesson 2: Jobs And Triggers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quartz-API"><span class="toc-number">1.1.</span> <span class="toc-text">Quartz API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jobs-and-Triggers"><span class="toc-number">1.2.</span> <span class="toc-text">Jobs and Triggers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Identities"><span class="toc-number">1.3.</span> <span class="toc-text">Identities</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/04/16/quartz-net-chinese-tutorial-lesson2/" data-title="Quartz.NET中文开发指南(二):Jobs And Triggers" data-url="http://lizhennet.github.io/2016/04/16/quartz-net-chinese-tutorial-lesson2/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lizhenhexo"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src ='http://7xpy0e.com1.z0.glb.clouddn.com/embedmini.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/04/27/get-started-with-Docker/" title="上一篇: Docker入门">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/" title="下一篇: Quartz.NET中文开发指南(一):快速使用Quartz.NET">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/design-pattern-behavioral-pattern2/">设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/design-pattern-behavioral-pattern/">设计模式-行为型模式(模板方法模式、命令模式、迭代器模式、观察者模式、中介者模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/design-pattern-structured-pattern2/">设计模式-结构型模式2(享元、桥接、装饰)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/get-started-with-Docker/">Docker入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/">Quartz.NET中文开发指南(二):Jobs And Triggers</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/">Quartz.NET中文开发指南(一):快速使用Quartz.NET</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/design-pattern-structured-pattern/">设计模式-结构型模式(适配器、组合、代理、外观)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/design-pattern-creational-pattern/">设计模式-创建型模式(单例、工厂、创建者、原型)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/design-pattern-solid/">设计模式六大原则-SOLID</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/Lagouspider/">程序员拉钩找工作的另类姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/22/oop-in-javascript/">JavaScript面向对象编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/JavaScript的原型链/">JavaScript的原型链</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/JavaScript的this关键字/">JavaScript的this关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/数据库设计规范/">数据库设计规范</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 三流程序猿
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >全站访问数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">文章阅读数: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <style>
+        body {
+          background: lightgray;
+        }
+        #container .left-col {
+          background: white;
+        }
+        .article-inner {
+          background: white;
+          margin-bottom: 1em;
+        }
+        .post-nav-button {
+          background: #ececec;
+        }
+        #header .header-nav .social #GitHub {
+          background-color: #bfd3ec;
+        }
+        #post-nav-button a {
+          background: rgba(215, 216, 215, .2);
+        }
+        .post-list {
+          background: white;
+        }
+    </style>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
