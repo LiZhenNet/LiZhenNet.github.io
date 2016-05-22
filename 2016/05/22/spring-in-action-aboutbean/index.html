@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>spring-in-action-aboutbean | 三流程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring中关于bean的一些笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-in-action-aboutbean">
+<meta property="og:url" content="http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/index.html">
+<meta property="og:site_name" content="三流程序猿">
+<meta property="og:description" content="Spring中关于bean的一些笔记">
+<meta property="og:updated_time" content="2016-05-22T06:52:25.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-in-action-aboutbean">
+<meta name="twitter:description" content="Spring中关于bean的一些笔记">
+  
+    <link rel="alternative" href="/atom.xml" title="三流程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">三流程序猿</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">三流程序猿</p>
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Bean/" style="font-size: 10px;">Bean</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java-Web/" style="font-size: 10px;">Java Web</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Quartz-NET/" style="font-size: 13.33px;">Quartz.NET</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 20px;">面向对象</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">三流程序猿</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">三流程序猿</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">三流程序猿</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">三流程序猿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-spring-in-action-aboutbean" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/22/spring-in-action-aboutbean/" class="article-date">
+      <time datetime="2016-05-22T06:41:28.000Z" itemprop="datePublished">2016-05-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spring-in-action-aboutbean
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bean/">Bean</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Bean-容器"><a href="#Bean-容器" class="headerlink" title="Bean 容器"></a>Bean 容器</h1><p>创建Bean  分发Bean</p>
+<h2 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h2><p>常用实现：XmlBeanFactory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BeanFactory factory = new XmlBeanFactory(new FileInputStream(&quot;Bean.xml&quot;))</span><br></pre></td></tr></table></figure></p>
+<h2 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h2><p>比BeanFactory多的功能：</p>
+<ol>
+<li>文本信息的解析，国际化的支持</li>
+<li>载入文件资源的通用方法</li>
+<li>向注册为监听器的Bean发送事件</li>
+</ol>
+<p>常用实现：</p>
+<ol>
+<li><p>ClassPathXmlApplicationContext  从类路径查找xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileSystemXmlApplicationContext 从文件系统查找xml   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileSystemXmlApplicationContext context=new FileSystemXmlApplicationContext(&quot;c:/spring.xml&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>XmlWebAppliactionContext  从web系统获取xml</p>
+</li>
+</ol>
+<p>BeanFactory 在调用getBean时候创建Bean ，ApplicationContext会预加载所有单实例Bean</p>
+<h1 id="Bean的生命"><a href="#Bean的生命" class="headerlink" title="Bean的生命"></a>Bean的生命</h1><p>Bean的创建过程：</p>
+<ol>
+<li>容器寻找Bean的定义信息并将其实例化</li>
+<li>使用依赖注入，Spring按照Bean定义信息配置Bean的所有属性</li>
+<li>如果Bean实现了 BeanNameAware接口，工厂调用Bean的setBeanName()方法传递Bean的ID</li>
+<li>如果Bean实现了 BeanFactoryAware接口，工厂调用setBeanFactory方法传入工厂本身</li>
+<li>如果有BeanPostProcessor和Bean关联，那么他们的postProcessBeforeInitialzation方法将被调用</li>
+<li>如果Bean 指定了init-method方法， 它将被调用</li>
+<li>如果有BeanPostProcessor和Bean关联，那么他们的postProcessAfterInitialzation方法将被调用</li>
+</ol>
+<p>Bean的删除过程：</p>
+<ol>
+<li>如果Bean实现了DisposableBean接口，destory（）方法将被调用</li>
+<li>如果指定了销毁方法就调用这个方法</li>
+</ol>
+<p>Appliication 创建Bean 的时候如果实现了ApplicationContextAware接口，setApplicationContext将会在setBeanFactory后调用</p>
+<h1 id="XML一些配置"><a href="#XML一些配置" class="headerlink" title="XML一些配置"></a>XML一些配置</h1><p>singleton   默认为true  单例模式， 为false时为原型模式 即每次返回一个新实例<br>init-method   实例化后调用<br>destroy-method  从容器删除时调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;IStudentsService&quot; class=&quot;StudentsServiceImp&quot; init-method=&quot;Init&quot; destroy-method=&quot;Destroy&quot;&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Bean注入"><a href="#Bean注入" class="headerlink" title="Bean注入"></a>Bean注入</h1><h2 id="Set方法注入"><a href="#Set方法注入" class="headerlink" title="Set方法注入"></a>Set方法注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;SetBean&quot; class=&quot;SetBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;name&quot;&gt;&lt;value&gt;String&lt;/value&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;service&quot;&gt;&lt;ref bean=&quot;IStudentsService&quot;&gt;&lt;/ref&gt; &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="构造函数注入"><a href="#构造函数注入" class="headerlink" title="构造函数注入"></a>构造函数注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;SetBean&quot; class=&quot;SetBean&quot;&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;0&quot; type=&quot;IStudentsService&quot;&gt;</span><br><span class="line">        &lt;ref bean=&quot;IStudentsService&quot;&gt;&lt;/ref&gt;</span><br><span class="line">    &lt;/constructor-arg&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;1&quot; type=&quot;java.lang.String&quot;&gt;</span><br><span class="line">        &lt;value&gt;String&lt;/value&gt;</span><br><span class="line">    &lt;/constructor-arg&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为了解决Bean注入参数的不确定性，可以使用index来指定参数顺序，type来指定参数类型     </p>
+</blockquote>
+<h2 id="自动注入"><a href="#自动注入" class="headerlink" title="自动注入"></a>自动注入</h2><p>Bean添加属性autowire=”byName|byType|constructor|autodetect”</p>
+<ol>
+<li>byName 试图在容器中寻找自动装的属性名相同的Bean</li>
+<li>byType 试图在容器中寻找自动装的属性类型相同的Bean</li>
+<li>constructor 试图在容器中查找和需要自动装配的Bean的构造函数一致的一个或多个Bean</li>
+<li>autodetect  首先尝试 constructor ，然后使用byType</li>
+</ol>
+<h1 id="Bean-Type转换"><a href="#Bean-Type转换" class="headerlink" title="Bean Type转换"></a>Bean Type转换</h1><p>在前面的例子中也使用了 type属性来告诉Spring传入参数的类型是什么。但是我们传入的都是String类型，他是如何转换的呢。<br>是通过继承 java.Beans.PropertyEditorSupport 重写调用setAsText来实现的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class StudentEditor extends PropertyEditorSupport &#123;</span><br><span class="line">    public void setAsText(String text) throws IllegalArgumentException &#123;</span><br><span class="line">        String[] arr = text.split(&quot;,&quot;);</span><br><span class="line">        Student student =new Student(arr[0],Integer.parseInt(arr[1]));</span><br><span class="line">        setValue(student);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    &lt;bean id=&quot;custinEditorConfigurer&quot; class=&quot;org.springframework.beans.factory.config.CustomEditorConfigurer&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;customEditors&quot;&gt;</span><br><span class="line">        &lt;map&gt;</span><br><span class="line">            &lt;entry key=&quot;Student&quot;&gt;</span><br><span class="line">                &lt;bean id=&quot;StudentEditer&quot; class=&quot;StudentEditor&quot;&gt;&lt;/bean&gt;</span><br><span class="line">            &lt;/entry&gt;</span><br><span class="line">        &lt;/map&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="对Bean进行处理"><a href="#对Bean进行处理" class="headerlink" title="对Bean进行处理"></a>对Bean进行处理</h1><h2 id="实现接口-BeanFactoryPostProcessor"><a href="#实现接口-BeanFactoryPostProcessor" class="headerlink" title="实现接口 BeanFactoryPostProcessor"></a>实现接口 BeanFactoryPostProcessor</h2><p>方法执行在Bean定义载入后，Bean实例化之前</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class BeanFactoryProcessor implements BeanFactoryPostProcessor &#123;</span><br><span class="line">    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException &#123;</span><br><span class="line">        System.out.println(&quot;BeanFactoryPostProcessor&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注册我们实现BeanFactoryPostProcessor接口的类"><a href="#注册我们实现BeanFactoryPostProcessor接口的类" class="headerlink" title="注册我们实现BeanFactoryPostProcessor接口的类"></a>注册我们实现BeanFactoryPostProcessor接口的类</h3><ol>
+<li>使用上下文时，直接注册Bean即可</li>
+<li>使用BeanFactory时,无法使用</li>
+</ol>
+<h2 id="实现接口BeanPostProcessor"><a href="#实现接口BeanPostProcessor" class="headerlink" title="实现接口BeanPostProcessor"></a>实现接口BeanPostProcessor</h2><p>方法执行在构造函数后，postProcessBeforeInitialization在Bean定义的Init前，after在Init方法后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class BeanProcessor implements BeanPostProcessor &#123;</span><br><span class="line">    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException &#123;</span><br><span class="line">        Field[] fields = bean.getClass().getDeclaredFields();</span><br><span class="line">        try &#123;</span><br><span class="line">            for(int i=0;i&lt;fields.length;i++)&#123;</span><br><span class="line">                if(fields[i].getType().equals(java.lang.String.class))&#123;</span><br><span class="line">                    fields[i].setAccessible(true);</span><br><span class="line">                    String name = (String) fields[i].get(bean);</span><br><span class="line">                    fields[i].set(bean,name.replace(&apos;S&apos;,&apos;s&apos;));</span><br><span class="line">                    System.out.println(&quot;-----BeforeInit-----&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;catch (Exception ex)&#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return  bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException &#123;</span><br><span class="line">        Field[] fields = bean.getClass().getDeclaredFields();</span><br><span class="line">        try &#123;</span><br><span class="line">            for(int i=0;i&lt;fields.length;i++)&#123;</span><br><span class="line">                if(fields[i].getType().equals(java.lang.String.class))&#123;</span><br><span class="line">                    fields[i].setAccessible(true);</span><br><span class="line">                    String name = (String) fields[i].get(bean);</span><br><span class="line">                    fields[i].set(bean,name.replace(&apos;g&apos;,&apos;G&apos;));</span><br><span class="line">                    System.out.println(&quot;-----AfterInit-----&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception ex)&#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return  bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注册我们实现BeanPostProcessor接口的类"><a href="#注册我们实现BeanPostProcessor接口的类" class="headerlink" title="注册我们实现BeanPostProcessor接口的类"></a>注册我们实现BeanPostProcessor接口的类</h3><ol>
+<li>使用上下文时，直接注册Bean即可</li>
+<li>使用BeanFactory时,需要调用工厂实例的addBeanPostProcessor方法传入自定义的BeanPostProcessor</li>
+</ol>
+<h3 id="分散配置"><a href="#分散配置" class="headerlink" title="分散配置"></a>分散配置</h3><h4 id="引用外部单个properties"><a href="#引用外部单个properties" class="headerlink" title="引用外部单个properties"></a>引用外部单个properties</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;Jdbc&quot; class=&quot;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&quot;&gt;</span><br><span class="line">     &lt;property name=&quot;location&quot;&gt;</span><br><span class="line">         &lt;value&gt;jdbc.properties&lt;/value&gt;</span><br><span class="line">     &lt;/property&gt;</span><br><span class="line"> &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="引用多个properties"><a href="#引用多个properties" class="headerlink" title="引用多个properties"></a>引用多个properties</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;Jdbc&quot; class=&quot;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;locations&quot;&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;value&gt;jdbc.properties&lt;/value&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>使用时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;DataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;url&quot;&gt;</span><br><span class="line">        &lt;value&gt;$&#123;database.url&#125;&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ResourceBundleMessageSource&quot;&gt;</span><br><span class="line">&lt;property name=&quot;basename&quot;&gt;</span><br><span class="line">    &lt;value&gt;traingtext&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>文件名称为 traingtext_en_US.properties<br>配置后通过context.getMessage来获取国际化的信息 也可以使用<spring:message code="">标签</spring:message></p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h2><p>在生命周期中ApplicationContext 会发生很多事件这些事件都是org.springframework.context.ApplicationEvent的子类<br>系统事件有：</p>
+<ol>
+<li>ContextRefreshedEvent 在应用上下文初始化或者刷新的时候发布</li>
+<li>ContextClosedEvent   在应用上下文关闭的时候发布</li>
+<li>RequestHandledEvent 在Web应用中，当一个请求呗处理后发布<br>当我们需要监听这些时间时，我们需要实现org.springframework,context.ApplicationListener接口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class EventListener implements org.springframework.context.ApplicationListener &#123;</span><br><span class="line">    public void onApplicationEvent(ApplicationEvent applicationEvent) &#123;</span><br><span class="line">        System.out.println(applicationEvent.getClass().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后像正常Bean一样在xml中配置即可</p>
+<h2 id="发布事件"><a href="#发布事件" class="headerlink" title="发布事件"></a>发布事件</h2><p>首先定义一个事件类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class StudentEvent extends ApplicationEvent &#123;</span><br><span class="line"></span><br><span class="line">    private String msg;</span><br><span class="line">    public StudentEvent(Object source,String msg) &#123;</span><br><span class="line">        super(source);</span><br><span class="line">        this.msg=msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getMsg() &#123;</span><br><span class="line">        return msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改我们上面的Listener<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class EventListener implements org.springframework.context.ApplicationListener &#123;</span><br><span class="line">    public void onApplicationEvent(ApplicationEvent applicationEvent) &#123;</span><br><span class="line">        if (applicationEvent.getClass().equals(StudentEvent.class))&#123;</span><br><span class="line">            StudentEvent studentEvent = (StudentEvent) applicationEvent;</span><br><span class="line">            System.out.println(studentEvent.getMsg());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>发布事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.publishEvent(new StudentEvent(student,&quot;获得到Student&quot;));</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/22/spring-in-action-aboutbean/">spring-in-action-aboutbean</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 三流程序猿 的个人博客">三流程序猿</a></p>
+        <p><span>发布时间:</span>2016年05月22日 - 14时41分</p>
+        <p><span>最后更新:</span>2016年05月22日 - 14时52分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/22/spring-in-action-aboutbean/" title="spring-in-action-aboutbean">http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/11/design-pattern-behavioral-pattern2/">
+                    设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bean-容器"><span class="toc-number">1.</span> <span class="toc-text">Bean 容器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BeanFactory"><span class="toc-number">1.1.</span> <span class="toc-text">BeanFactory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ApplicationContext"><span class="toc-number">1.2.</span> <span class="toc-text">ApplicationContext</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bean的生命"><span class="toc-number">2.</span> <span class="toc-text">Bean的生命</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML一些配置"><span class="toc-number">3.</span> <span class="toc-text">XML一些配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bean注入"><span class="toc-number">4.</span> <span class="toc-text">Bean注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Set方法注入"><span class="toc-number">4.1.</span> <span class="toc-text">Set方法注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数注入"><span class="toc-number">4.2.</span> <span class="toc-text">构造函数注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动注入"><span class="toc-number">4.3.</span> <span class="toc-text">自动注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bean-Type转换"><span class="toc-number">5.</span> <span class="toc-text">Bean Type转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对Bean进行处理"><span class="toc-number">6.</span> <span class="toc-text">对Bean进行处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现接口-BeanFactoryPostProcessor"><span class="toc-number">6.1.</span> <span class="toc-text">实现接口 BeanFactoryPostProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册我们实现BeanFactoryPostProcessor接口的类"><span class="toc-number">6.1.1.</span> <span class="toc-text">注册我们实现BeanFactoryPostProcessor接口的类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现接口BeanPostProcessor"><span class="toc-number">6.2.</span> <span class="toc-text">实现接口BeanPostProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册我们实现BeanPostProcessor接口的类"><span class="toc-number">6.2.1.</span> <span class="toc-text">注册我们实现BeanPostProcessor接口的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分散配置"><span class="toc-number">6.2.2.</span> <span class="toc-text">分散配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#引用外部单个properties"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">引用外部单个properties</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用多个properties"><span class="toc-number">6.2.2.2.</span> <span class="toc-text">引用多个properties</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#国际化"><span class="toc-number">7.</span> <span class="toc-text">国际化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件"><span class="toc-number">8.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#监听事件"><span class="toc-number">8.1.</span> <span class="toc-text">监听事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布事件"><span class="toc-number">8.2.</span> <span class="toc-text">发布事件</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/22/spring-in-action-aboutbean/" data-title="spring-in-action-aboutbean" data-url="http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lizhenhexo"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src ='http://7xpy0e.com1.z0.glb.clouddn.com/embedmini.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/11/design-pattern-behavioral-pattern2/" title="下一篇: 设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/spring-in-action-aboutbean/">spring-in-action-aboutbean</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/design-pattern-behavioral-pattern2/">设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/design-pattern-behavioral-pattern/">设计模式-行为型模式(模板方法模式、命令模式、迭代器模式、观察者模式、中介者模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/design-pattern-structured-pattern2/">设计模式-结构型模式2(享元、桥接、装饰)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/get-started-with-Docker/">Docker入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/">Quartz.NET中文开发指南(二):Jobs And Triggers</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/">Quartz.NET中文开发指南(一):快速使用Quartz.NET</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/design-pattern-structured-pattern/">设计模式-结构型模式(适配器、组合、代理、外观)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/design-pattern-creational-pattern/">设计模式-创建型模式(单例、工厂、创建者、原型)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/design-pattern-solid/">设计模式六大原则-SOLID</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/Lagouspider/">程序员拉钩找工作的另类姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/22/oop-in-javascript/">JavaScript面向对象编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/JavaScript的原型链/">JavaScript的原型链</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/JavaScript的this关键字/">JavaScript的this关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/数据库设计规范/">数据库设计规范</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 三流程序猿
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >全站访问数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">文章阅读数: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <style>
+        body {
+          background: lightgray;
+        }
+        #container .left-col {
+          background: white;
+        }
+        .article-inner {
+          background: white;
+          margin-bottom: 1em;
+        }
+        .post-nav-button {
+          background: #ececec;
+        }
+        #header .header-nav .social #GitHub {
+          background-color: #bfd3ec;
+        }
+        #post-nav-button a {
+          background: rgba(215, 216, 215, .2);
+        }
+        .post-list {
+          background: white;
+        }
+    </style>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
