@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lizhennet.github.io/"/>
-  <updated>2016-05-22T06:52:25.674Z</updated>
+  <updated>2016-05-22T06:55:12.807Z</updated>
   <id>http://lizhennet.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>spring-in-action-aboutbean</title>
+    <title>Spring In Action 笔记 --关于Bean</title>
     <link href="http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/"/>
     <id>http://lizhennet.github.io/2016/05/22/spring-in-action-aboutbean/</id>
     <published>2016-05-22T06:41:28.000Z</published>
-    <updated>2016-05-22T06:52:25.674Z</updated>
+    <updated>2016-05-22T06:55:12.807Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Bean-容器&quot;&gt;&lt;a href=&quot;#Bean-容器&quot; class=&quot;headerlink&quot; title=&quot;Bean 容器&quot;&gt;&lt;/a&gt;Bean 容器&lt;/h1&gt;&lt;p&gt;创建Bean  分发Bean&lt;/p&gt;
 &lt;h2 id=&quot;BeanFactory&quot;&gt;&lt;a href=&quot;#BeanFactory&quot; class=&quot;headerlink&quot; title=&quot;BeanFactory&quot;&gt;&lt;/a&gt;BeanFactory&lt;/h2&gt;&lt;p&gt;常用实现：XmlBeanFactory&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;BeanFactory factory = new XmlBeanFactory(new FileInputStream(&amp;quot;Bean.xml&amp;quot;))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
