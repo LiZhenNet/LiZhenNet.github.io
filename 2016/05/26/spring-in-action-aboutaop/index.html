@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>设计模式六大原则-SOLID | 三流程序猿</title>
+  <title>Spring In Action 笔记 --关于AOP(未完成，待研究深入) | 三流程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="理解设计模式六个原则：单一职责原则、开闭原则、里氏代替原则、接口隔离原则、依赖倒置原则">
+  <meta name="description" content="Spring中关于AOP的一些笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式六大原则-SOLID">
-<meta property="og:url" content="http://lizhennet.github.io/2016/04/04/design-pattern-solid/index.html">
+<meta property="og:title" content="Spring In Action 笔记 --关于AOP(未完成，待研究深入)">
+<meta property="og:url" content="http://lizhennet.github.io/2016/05/26/spring-in-action-aboutaop/index.html">
 <meta property="og:site_name" content="三流程序猿">
-<meta property="og:description" content="理解设计模式六个原则：单一职责原则、开闭原则、里氏代替原则、接口隔离原则、依赖倒置原则">
-<meta property="og:updated_time" content="2016-05-15T08:24:43.117Z">
+<meta property="og:description" content="Spring中关于AOP的一些笔记">
+<meta property="og:updated_time" content="2016-05-26T08:15:03.649Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式六大原则-SOLID">
-<meta name="twitter:description" content="理解设计模式六个原则：单一职责原则、开闭原则、里氏代替原则、接口隔离原则、依赖倒置原则">
+<meta name="twitter:title" content="Spring In Action 笔记 --关于AOP(未完成，待研究深入)">
+<meta name="twitter:description" content="Spring中关于AOP的一些笔记">
   
     <link rel="alternative" href="/atom.xml" title="三流程序猿" type="application/atom+xml">
   
@@ -192,11 +192,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-design-pattern-solid" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-spring-in-action-aboutaop" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/04/design-pattern-solid/" class="article-date">
-      <time datetime="2016-04-04T12:53:43.000Z" itemprop="datePublished">2016-04-04</time>
+      <a href="/2016/05/26/spring-in-action-aboutaop/" class="article-date">
+      <time datetime="2016-05-26T08:13:27.000Z" itemprop="datePublished">2016-05-26</time>
 </a>
     </div>
   
@@ -209,7 +209,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式六大原则-SOLID
+      Spring In Action 笔记 --关于AOP(未完成，待研究深入)
     </h1>
   
 
@@ -218,13 +218,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AOP/">AOP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -234,41 +234,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>理解设计模式六个原则：单一职责原则、开闭原则、里氏代替原则、接口隔离原则、依赖倒置原则<br><a id="more"></a></p>
-<h2 id="S-单一职责原则-Single-Responsibility-Principle"><a href="#S-单一职责原则-Single-Responsibility-Principle" class="headerlink" title="S-单一职责原则(Single Responsibility Principle)"></a>S-单一职责原则(Single Responsibility Principle)</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>单一职责原则：一个类应该只有一个发生变化的原因。<br>There should never be more than one reason for a class to change.</p>
+        <h2 id="AOP-术语"><a href="#AOP-术语" class="headerlink" title="AOP 术语"></a>AOP 术语</h2><ol>
+<li>连接点（Joinpoint）连接点就是应用程序执行过程中切面插入的地方。<strong>AOP中表示为“在哪里干“</strong></li>
+<li>切入点（Pointcut）切入点定义了通知在那些连接点。 <strong>在AOP中表示为“在哪里干”的集合</strong></li>
+<li>通知（Advice） 通知切面的实际实现。<strong>在AOP中表示”干什么“</strong></li>
+<li>切面（Aspect） 切面就是你想要实现的交叉功能，比如日志记录切面。<strong>在AOP中表示为“在哪干”和“干什么”集合”</strong></li>
+<li>引入(Introduction) 引入允许你为已存在的类添加新方法和属性。 <strong>在AOP中表示为“引入什么“</strong></li>
+<li>目标对象(Target) 目标对象是被通知的对象。<strong>在AOP中表示为“对谁干”</strong></li>
+<li>织入（Weaving）织入是将切面应用到目标对象而创建一个新的代理对象的过程。<blockquote>
+<p>织入发生在目标对象生命周期的多个点上：<br>编译期 –切面在目标对象编译时织入，这个需要一个特殊的编译器。<br>类装载期 –切面在目标对象被载入到JVM中时织入，这个需要一个特殊的类载入器， 它在类载入到应用系统之前增强目标对象的字节码。<br>运行期 –漆面在应用系统运行时织入，通常AOP容器将在织入切面的时候动态生成委托目标对象的代理对象。</p>
 </blockquote>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>  说到单一职责原则，很多人都会不屑一顾。因为它太简单了，但是《设计模式之禅》中有这么一句话：<br>“只要你想和别人争执、怄气或者是吵架，这个原则是屡试不爽的。看到一个接口或类是这样或那样设计的，你就问一句：‘你设计的类符合单一职责原则吗？’保准<br>对方立马‘萎缩’掉”,可见基本上很少人能做到自己写的类符合单一职责原则。同样以该书中所举的例子：我们设计一个IPhone的接口包含三个方法：拨号、通话、挂机<br>，我们可能写出来的代码如下：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IPhone</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//拨通电话</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dial</span>(<span class="params">String phoneNumber</span>)</span>;</span><br><span class="line">    <span class="comment">//通话</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">chat</span>(<span class="params">Object o</span>)</span>;</span><br><span class="line">    <span class="comment">//通话完毕，挂电话</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hangup</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面是书中的反例，因为实际Iphone包含了两个职责：一个是协议管理，一个是数据传送。dial()和hangup()两个方法实现的是协议管理，分别负责拨号接通和挂机；chat()实现<br>的是数据的传送，可能需要再分离出两个接口：IConnectionManager和IDataTransfer。<br>但是我觉得80%以上才程序员会写出上面代码,:-D，因为，考虑拆分职责浪费时间，同时拆分职责增加系统类文件数量，系统复杂度增加，考虑到有些业务的不可变性，拆分职责带来的收益可能微乎其微。</p>
-<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><ol>
-<li>职责更明确，可读性提高。</li>
-<li>职责分离，可维护性提高，变更引起的风险降低。</li>
+</li>
+<li>代理（Proxy）代理是将通知应用到目标对象后创建的对象。</li>
 </ol>
-<h2 id="O-开闭原则-Open-Closed-Principle"><a href="#O-开闭原则-Open-Closed-Principle" class="headerlink" title="O-开闭原则(Open-Closed Principle)"></a>O-开闭原则(Open-Closed Principle)</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>开闭原则：软件实体(类、模块、函数等)应该对扩展开放，对修改关闭。<br>Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.</p>
-</blockquote>
-<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><p>   很多人看到上面的定义会有些疑问，特别是“对修改关闭”，其实对修改关闭并不是禁止修改，而是禁止通过修改已有的代码来实现变化，通过扩展来实现变化。<br>例如：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IBook</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取价格</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们创建接口IBook，通过getPrice方法来获取当前数的价格，声明Book类来实现IBook接口，当我们需要打折时，只需增加子类OffBook，覆写getPrice方法，<br>替换Book类即可，当我们那天不需要打折时只需再替换回来，同时我们没有修改之前的类，也保持了系统历史的纯洁性。</p>
-<h3 id="好处-1"><a href="#好处-1" class="headerlink" title="好处"></a>好处</h3><ol>
-<li>提高可维护性，维护人员只需重新建个新子类来实现变更，无需修改原有代码。</li>
-<li>提高复用性</li>
+<h2 id="Spring-通知类型"><a href="#Spring-通知类型" class="headerlink" title="Spring 通知类型"></a>Spring 通知类型</h2><ol>
+<li>Around    接口org.aopalliance.intercept.MethodInterceptor  拦截对目标对象的调用</li>
+<li>Before    接口org.springframework.aop.BeforeAdvice         在目标方法被调用前调用</li>
+<li>After     接口org.springframework.aop.AfterReturningAdvice 在目标方法被调用后调用</li>
+<li>Throws    接口org.springframework.aop.ThrowsAdvice         当目标函数抛出异常时调用</li>
 </ol>
-<h2 id="L-里氏替换原则-Liskov-Substitution-Principle"><a href="#L-里氏替换原则-Liskov-Substitution-Principle" class="headerlink" title="L-里氏替换原则(Liskov Substitution Principle)"></a>L-里氏替换原则(Liskov Substitution Principle)</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>如果对每一个类型为S的对象o1，都有类型为T的对象o2，使得以T定义的所有程序P在所在的对象o1都代换为o2时，<br>程序P的行为没有发生变化，那么类型S是类型T的子类型。<br>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T,the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T</p>
-</blockquote>
-<h3 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h3><p>  简单的解释上面的定义就是程序P中含有类型T，当我们使用T的子类型S，替换类型T时，程序P的行为没有变化，也就是说，在软件开发过程中，<br>子类替换父类后，程序的行为是一样的。</p>
-<h2 id="L-迪米特法则-Law-of-Demeter"><a href="#L-迪米特法则-Law-of-Demeter" class="headerlink" title="L-迪米特法则(Law of Demeter)"></a>L-迪米特法则(Law of Demeter)</h2><h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>一个对象应该对其他对象有最少的了解<br>Only talk to your immediate friends</p>
-</blockquote>
-<h3 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h3><p> 迪米特法则也叫最少知识原则，指的是一个对象应当对其他对象有尽可能少的了解。<br>也就是说，一个对象应尽量少的与其他对象之间发生相互作用，使得对象相对独立，这样当一个对象需要修改时，影响其他对象就会越少，扩展起来更加容易。</p>
-<h2 id="I-接口隔离原则-Interface-Segregation-Principle"><a href="#I-接口隔离原则-Interface-Segregation-Principle" class="headerlink" title="I-接口隔离原则(Interface Segregation Principle)"></a>I-接口隔离原则(Interface Segregation Principle)</h2><h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>客户端不应该依赖它不需要的接口。<br>Clients should not be forced to depend upon interfaces that they don’t use.</p>
-</blockquote>
-<h3 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h3><p>  接口隔离原则的含义是将一庞大的接口细化成多个接口，一个类实现一个庞大的接口不如实现多个接口零活。<br>很多人会觉的接口隔离原则跟单一职责原则很相似，其实有所不同单一职责原则原注重的是职责分离；而接口隔离原则注重对接口依赖的隔离。</p>
-<h2 id="D-依赖倒置原则-Dependence-Inversion-Principle"><a href="#D-依赖倒置原则-Dependence-Inversion-Principle" class="headerlink" title="D-依赖倒置原则(Dependence Inversion Principle)"></a>D-依赖倒置原则(Dependence Inversion Principle)</h2><h3 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>高层模块不应该依赖低层模块，二者都应该依赖其抽象；抽象不应该依赖细节；细节应该依赖抽象。<br>High level modules should not depend upon low level modules.Both should depend upon abstractions.<br>Abstractions should not depend upon details.Details should depend upon abstractions.</p>
-</blockquote>
-<h3 id="解释-5"><a href="#解释-5" class="headerlink" title="解释"></a>解释</h3><p>高层模块与底层模块：每一个逻辑的实现都是由原子逻辑组成的，不可分割的原子逻辑就是低层模块，原子逻辑的再组装就是高层模块。<br>抽象与细节：在C#(Java)语言中，抽象就是指接口或抽象类，两者都是不能直接被实例化的；细节就是接口或抽象类的实现类。<br>依赖倒置原则更加精简的定义就是“面向接口编程”，接口相比实现更加稳定，以接口为基础搭建起来的架构比以实现为基础搭建起来的架构要稳定的多。  </p>
+<h2 id="Spring-定义切入点"><a href="#Spring-定义切入点" class="headerlink" title="Spring 定义切入点"></a>Spring 定义切入点</h2><p>核心接口是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface Pointcut&#123;</span><br><span class="line">    ClassFilter getClassFilter();</span><br><span class="line">    MethodMatcher getMethodMatcher();</span><br><span class="line">&#125;</span><br><span class="line">public interface ClassFilter&#123;</span><br><span class="line">    boolean matches(Class clazz);</span><br><span class="line">&#125;</span><br><span class="line">public interface MethodMatcher&#123;</span><br><span class="line">    boolean matches(Method m,Class targetClass);</span><br><span class="line">    public boolean isRuntime();</span><br><span class="line">    public boolean matches(Method m, Class target, Object[] args) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>ClassFilter：通过类来过滤切面，实现这个接口的类决定了以参数传进来的类是否应该被通知。实现这个接口的类一般根据类名来判断。</li>
+<li>MethodMatcher：通过方法来过滤，先执行matches(Method m,Class targetClass)，如果返回true，然后通过IsRuntime来判断MethodMatcher是<br>静态还是动态，如果是动态的调用 matches(Method m, Class target, Object[] args)根据运行时的值来决定通知是否需要被应用，也就是说如果<br>是动态的每次都会调用matches(Method m, Class target, Object[] args)，所以首选静态切入点。<br>matches(Method m,Class targetClass) 和isRuntime 只是在代理类创建时调用一次。</li>
+</ol>
+<h2 id="理解-Advisor"><a href="#理解-Advisor" class="headerlink" title="理解 Advisor"></a>理解 Advisor</h2><p>Advisor是spring通知和切入点组合到一起的一个对象</p>
 
       
     </div>
@@ -277,13 +268,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/04/design-pattern-solid/">设计模式六大原则-SOLID</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/26/spring-in-action-aboutaop/">Spring In Action 笔记 --关于AOP(未完成，待研究深入)</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 三流程序猿 的个人博客">三流程序猿</a></p>
-        <p><span>发布时间:</span>2016年04月04日 - 20时53分</p>
-        <p><span>最后更新:</span>2016年05月15日 - 16时24分</p>
+        <p><span>发布时间:</span>2016年05月26日 - 16时13分</p>
+        <p><span>最后更新:</span>2016年05月26日 - 16时15分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/04/design-pattern-solid/" title="设计模式六大原则-SOLID">http://lizhennet.github.io/2016/04/04/design-pattern-solid/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/04/04/design-pattern-solid/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/26/spring-in-action-aboutaop/" title="Spring In Action 笔记 --关于AOP(未完成，待研究深入)">http://lizhennet.github.io/2016/05/26/spring-in-action-aboutaop/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/05/26/spring-in-action-aboutaop/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -296,16 +287,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/04/06/design-pattern-creational-pattern/">
-                    设计模式-创建型模式(单例、工厂、创建者、原型)
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/03/24/Lagouspider/">
-                    程序员拉钩找工作的另类姿势
+                <a href="/2016/05/22/spring-in-action-aboutbean/">
+                    Spring In Action 笔记 --关于Bean
                 </a>
             </div>
         
@@ -316,7 +301,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#S-单一职责原则-Single-Responsibility-Principle"><span class="toc-number">1.</span> <span class="toc-text">S-单一职责原则(Single Responsibility Principle)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释"><span class="toc-number">1.2.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#好处"><span class="toc-number">1.3.</span> <span class="toc-text">好处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#O-开闭原则-Open-Closed-Principle"><span class="toc-number">2.</span> <span class="toc-text">O-开闭原则(Open-Closed Principle)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-1"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-1"><span class="toc-number">2.2.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#好处-1"><span class="toc-number">2.3.</span> <span class="toc-text">好处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#L-里氏替换原则-Liskov-Substitution-Principle"><span class="toc-number">3.</span> <span class="toc-text">L-里氏替换原则(Liskov Substitution Principle)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-2"><span class="toc-number">3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-2"><span class="toc-number">3.2.</span> <span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#L-迪米特法则-Law-of-Demeter"><span class="toc-number">4.</span> <span class="toc-text">L-迪米特法则(Law of Demeter)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-3"><span class="toc-number">4.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-3"><span class="toc-number">4.2.</span> <span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-接口隔离原则-Interface-Segregation-Principle"><span class="toc-number">5.</span> <span class="toc-text">I-接口隔离原则(Interface Segregation Principle)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-4"><span class="toc-number">5.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-4"><span class="toc-number">5.2.</span> <span class="toc-text">解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-依赖倒置原则-Dependence-Inversion-Principle"><span class="toc-number">6.</span> <span class="toc-text">D-依赖倒置原则(Dependence Inversion Principle)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-5"><span class="toc-number">6.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释-5"><span class="toc-number">6.2.</span> <span class="toc-text">解释</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP-术语"><span class="toc-number">1.</span> <span class="toc-text">AOP 术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-通知类型"><span class="toc-number">2.</span> <span class="toc-text">Spring 通知类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-定义切入点"><span class="toc-number">3.</span> <span class="toc-text">Spring 定义切入点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解-Advisor"><span class="toc-number">4.</span> <span class="toc-text">理解 Advisor</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -380,7 +365,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/04/04/design-pattern-solid/" data-title="设计模式六大原则-SOLID" data-url="http://lizhennet.github.io/2016/04/04/design-pattern-solid/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/26/spring-in-action-aboutaop/" data-title="Spring In Action 笔记 --关于AOP(未完成，待研究深入)" data-url="http://lizhennet.github.io/2016/05/26/spring-in-action-aboutaop/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -404,15 +389,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/06/design-pattern-creational-pattern/" title="上一篇: 设计模式-创建型模式(单例、工厂、创建者、原型)">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/03/24/Lagouspider/" title="下一篇: 程序员拉钩找工作的另类姿势">
+            <a href="/2016/05/22/spring-in-action-aboutbean/" title="下一篇: Spring In Action 笔记 --关于Bean">
                 <i class="fa fa-angle-right"></i>
             </a>
         
