@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java多线程编程--基础知识总结 | 三流程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java多线程编程--基础知识总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程编程--基础知识总结">
+<meta property="og:url" content="http://lizhennet.github.io/2016/05/31/java-multi-thread-chapter1/index.html">
+<meta property="og:site_name" content="三流程序猿">
+<meta property="og:description" content="Java多线程编程--基础知识总结">
+<meta property="og:updated_time" content="2016-05-31T01:02:15.856Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java多线程编程--基础知识总结">
+<meta name="twitter:description" content="Java多线程编程--基础知识总结">
+  
+    <link rel="alternative" href="/atom.xml" title="三流程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: true
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">三流程序猿</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">三流程序猿</p>
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/Bean/" style="font-size: 10px;">Bean</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 13.33px;">Java Web</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Quartz-NET/" style="font-size: 13.33px;">Quartz.NET</a> <a href="/tags/Spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/容器/" style="font-size: 10px;">容器</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 20px;">面向对象</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">三流程序猿</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">三流程序猿</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="http://7xpy0e.com1.z0.glb.clouddn.com/avatar.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">三流程序猿</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">三流程序猿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lizhencoder@gmail.com" title="Email"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-java-multi-thread-chapter1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/31/java-multi-thread-chapter1/" class="article-date">
+      <time datetime="2016-05-31T00:59:53.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java多线程编程--基础知识总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>进程：系统进行资源分配和调度的独立单位。<br>线程：在进程中独立运行的子任务。</p>
+<h2 id="实现多线程"><a href="#实现多线程" class="headerlink" title="实现多线程"></a>实现多线程</h2><p>实现多线程编程的方式主要有两种:一种是继承Thread类，另一种是实现Runnable接口。Thread类实现了Runnable接口。他们之间是多态关系，<br>这两种创建线程在工作时的性质是一样的，没有本质的区别。</p>
+<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        MyThread thread = new MyThread();</span><br><span class="line">        thread.start();</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">        System.in.read();</span><br><span class="line">    &#125;</span><br><span class="line">//结果:</span><br><span class="line">//main</span><br><span class="line">//Thread-0</span><br></pre></td></tr></table></figure>
+<p>看结果 MyThread的run方法执行的比较晚，也就是说当使用多线程技术时，代码运行结果与代码执行顺序或者调用顺序无关。<br>执行start()方法的顺序不带吗线程启动的顺序。</p>
+<h3 id="实现Runnable接口-注意是Runn"><a href="#实现Runnable接口-注意是Runn" class="headerlink" title="实现Runnable接口(注意是Runn)"></a>实现Runnable接口(注意是Runn)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class MyRunable implements Runnable &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(&quot;Runnable执行中&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        MyRunable runnable = new MyRunable();</span><br><span class="line">        Thread thread = new Thread(runnable);</span><br><span class="line">        thread.start();</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">        System.in.read();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多线程共享数据"><a href="#多线程共享数据" class="headerlink" title="多线程共享数据"></a>多线程共享数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread &#123;</span><br><span class="line">    private  int count=4;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        count--;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+&quot; count:&quot;+count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        MyThread mythread = new MyThread();</span><br><span class="line">        Thread a = new Thread(mythread,&quot;a&quot;);</span><br><span class="line">        Thread b = new Thread(mythread,&quot;b&quot;);</span><br><span class="line">        Thread c = new Thread(mythread,&quot;c&quot;);</span><br><span class="line">        Thread d = new Thread(mythread,&quot;d&quot;);</span><br><span class="line">        a.start();</span><br><span class="line">        b.start();</span><br><span class="line">        c.start();</span><br><span class="line">        d.start();</span><br><span class="line">        System.in.read();</span><br><span class="line">&#125;</span><br><span class="line">// 结果：</span><br><span class="line">// a count:2</span><br><span class="line">// c count:0</span><br><span class="line">// b count:2</span><br><span class="line">// d count:1</span><br></pre></td></tr></table></figure>
+<p>可以看到打印的结果不是我们预期的依次递减，在某些JVM中，i–的操作要分为如下3步：</p>
+<ol>
+<li>取原有i值</li>
+<li>计算i-1</li>
+<li>对i进行赋值<br>在这3个步骤中，如果有多个线程同时访问，那么一定会出现非线程安全问题。<h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread &#123;</span><br><span class="line">    private  int count=4;</span><br><span class="line">    @Override</span><br><span class="line">    synchronized public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        count--;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+&quot; count:&quot;+count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在方法前面加入synchronized关键字，使多个线程在执行方法时，以排队的方式进行处理。</p>
+<h2 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h2><p>在java中有以下3种方法可以终止正在运行的线程：</p>
+<ol>
+<li>使用退出标志，使线程正常退出，也就是当run方法完成后线程终止。</li>
+<li>使用stop方法强制终止线程，但是不推荐这个方法，这个方法是不安全的，他可以停止一个正在运行的线程，这可能产生不可预料的结果。</li>
+<li>使用interrupt</li>
+</ol>
+<h3 id="interrupt"><a href="#interrupt" class="headerlink" title="interrupt"></a>interrupt</h3><p>调用interrupt()方法来停止线程仅仅是在当前线程中打了停止的标记，并不是真正的停止线程。</p>
+<p>this.interrupted() 测试当前线程是否已经中断。<br>如果连续两次调用该方法，则第二次调用将放回false(在第一次调用已清除了其中断状态后，第二次调用检测完中断状态前，当前线程再次中断的情况除外)</p>
+<p>this.IsInterrupted() 测试线程是否已经中断。<br>判断是否中断状态，但不清楚状态标识。</p>
+<h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p>使用stop()释放锁将会给数据造成不一致的结果</p>
+<h3 id="使用return停止线程"><a href="#使用return停止线程" class="headerlink" title="使用return停止线程"></a>使用return停止线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void run()  &#123;</span><br><span class="line">    super.run();</span><br><span class="line">    count--;</span><br><span class="line">    if(this.isInterrupted())&#123;</span><br><span class="line">         return;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(Thread.currentThread().getName()+&quot; count:&quot;+count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="暂停线程"><a href="#暂停线程" class="headerlink" title="暂停线程"></a>暂停线程</h2><h3 id="suspend和resume"><a href="#suspend和resume" class="headerlink" title="suspend和resume"></a>suspend和resume</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws IOException, InterruptedException &#123;</span><br><span class="line">    MyThread mythread = new MyThread();</span><br><span class="line">    Thread a = new Thread(mythread,&quot;a&quot;);</span><br><span class="line">    a.start();</span><br><span class="line">    a.suspend();</span><br><span class="line">    System.out.println(System.currentTimeMillis());</span><br><span class="line">    a.sleep(10000);</span><br><span class="line">    a.resume();</span><br><span class="line">    System.out.println(System.currentTimeMillis());</span><br><span class="line">    System.in.read();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>suspend和resume 缺点：极易造成公共的同步对象的独占，还有因为线程暂停造成数据不同步。</p>
+<h2 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h2><h3 id="线程优先级的继承特性"><a href="#线程优先级的继承特性" class="headerlink" title="线程优先级的继承特性"></a>线程优先级的继承特性</h3><p>线程优先级的继承特性 比如A线程启动B线程，则B线程的优先级与A是一样的。</p>
+<h3 id="线程优先级的规则性"><a href="#线程优先级的规则性" class="headerlink" title="线程优先级的规则性"></a>线程优先级的规则性</h3><p>CPU会尽量将执行资源让给优先级比较高的线程。</p>
+<h3 id="线程优先级的随机性"><a href="#线程优先级的随机性" class="headerlink" title="线程优先级的随机性"></a>线程优先级的随机性</h3><p>优先级高的并不一定先执行完。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="currentThread-方法"><a href="#currentThread-方法" class="headerlink" title="currentThread()方法"></a>currentThread()方法</h3><p>currentThread()方法可以返回代码段正在被那个线程调用的信息。</p>
+<h3 id="isAlive-方法"><a href="#isAlive-方法" class="headerlink" title="isAlive()方法"></a>isAlive()方法</h3><p>isAlive()方法是判断当前的线程是否处于活动状态。</p>
+<h3 id="sleep-方法"><a href="#sleep-方法" class="headerlink" title="sleep()方法"></a>sleep()方法</h3><p>sleep()是指定毫秒数内让当前“正在执行的线程”休眠(暂停执行)。</p>
+<h3 id="getId-方法"><a href="#getId-方法" class="headerlink" title="getId()方法"></a>getId()方法</h3><p>getId()方法的作用是取得线程的唯一标识。</p>
+<h3 id="yield-方法"><a href="#yield-方法" class="headerlink" title="yield()方法"></a>yield()方法</h3><p>yield()方法的作用是放弃当前的CPU资源，将它让给其他任务去占用CPU执行时间。<br>但是放弃的时间不确定，有可能刚刚放弃，马上又获得cpu时间片。</p>
+<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><p>在java线程中有两种线程，一种是用户线程，另一种是守护线程。守护线程是一种特殊的线程，当进程中不存在非守护线程时，守护线程会自动销毁。<br>典型的守护线程就是垃圾回收线程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    public static void main(String[] args) throws IOException, InterruptedException &#123;</span><br><span class="line">        MyThread2 thread2 = new MyThread2();</span><br><span class="line">        thread2.setDaemon(true);</span><br><span class="line">        thread2.start();</span><br><span class="line">        Thread.sleep(5000);</span><br><span class="line">        System.out.println(&quot;执行结束&quot;);</span><br><span class="line">        //System.in.read();</span><br><span class="line">    &#125;</span><br><span class="line">    public class MyThread2 extends Thread &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        long beginTime =System.currentTimeMillis();</span><br><span class="line">        long addResult=0;</span><br><span class="line">        for (int j=0;true;j++)&#123;</span><br><span class="line">            for (int i=0;i&lt;50000;i++)&#123;</span><br><span class="line">                Random random =new Random();</span><br><span class="line">                random.nextInt();</span><br><span class="line">                addResult+=i;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(&quot;执行中..&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当设置setDaemon(true)后五秒钟打印“执行结束”后Thread2不会执行，当没有setDaemon(true)，Thread2作为用户线程则会一种执行。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/31/java-multi-thread-chapter1/">Java多线程编程--基础知识总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 三流程序猿 的个人博客">三流程序猿</a></p>
+        <p><span>发布时间:</span>2016年05月31日 - 08时59分</p>
+        <p><span>最后更新:</span>2016年05月31日 - 09时02分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/31/java-multi-thread-chapter1/" title="Java多线程编程--基础知识总结">http://lizhennet.github.io/2016/05/31/java-multi-thread-chapter1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lizhennet.github.io/2016/05/31/java-multi-thread-chapter1/　　作者: 三流程序猿" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/26/spring-in-action-aboutaop/">
+                    Spring In Action 笔记 --关于AOP(未完成，待研究深入)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程与线程"><span class="toc-number">1.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现多线程"><span class="toc-number">2.</span> <span class="toc-text">实现多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承Thread类"><span class="toc-number">2.1.</span> <span class="toc-text">继承Thread类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Runnable接口-注意是Runn"><span class="toc-number">2.2.</span> <span class="toc-text">实现Runnable接口(注意是Runn)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程共享数据"><span class="toc-number">2.3.</span> <span class="toc-text">多线程共享数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized"><span class="toc-number">2.4.</span> <span class="toc-text">synchronized</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止线程"><span class="toc-number">3.</span> <span class="toc-text">停止线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#interrupt"><span class="toc-number">3.1.</span> <span class="toc-text">interrupt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stop"><span class="toc-number">3.2.</span> <span class="toc-text">stop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用return停止线程"><span class="toc-number">3.3.</span> <span class="toc-text">使用return停止线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#暂停线程"><span class="toc-number">4.</span> <span class="toc-text">暂停线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#suspend和resume"><span class="toc-number">4.1.</span> <span class="toc-text">suspend和resume</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程的优先级"><span class="toc-number">5.</span> <span class="toc-text">线程的优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程优先级的继承特性"><span class="toc-number">5.1.</span> <span class="toc-text">线程优先级的继承特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程优先级的规则性"><span class="toc-number">5.2.</span> <span class="toc-text">线程优先级的规则性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程优先级的随机性"><span class="toc-number">5.3.</span> <span class="toc-text">线程优先级的随机性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法"><span class="toc-number">6.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#currentThread-方法"><span class="toc-number">6.1.</span> <span class="toc-text">currentThread()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isAlive-方法"><span class="toc-number">6.2.</span> <span class="toc-text">isAlive()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep-方法"><span class="toc-number">6.3.</span> <span class="toc-text">sleep()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getId-方法"><span class="toc-number">6.4.</span> <span class="toc-text">getId()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield-方法"><span class="toc-number">6.5.</span> <span class="toc-text">yield()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#守护线程"><span class="toc-number">7.</span> <span class="toc-text">守护线程</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/31/java-multi-thread-chapter1/" data-title="Java多线程编程--基础知识总结" data-url="http://lizhennet.github.io/2016/05/31/java-multi-thread-chapter1/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lizhenhexo"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src ='http://7xpy0e.com1.z0.glb.clouddn.com/embedmini.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/26/spring-in-action-aboutaop/" title="下一篇: Spring In Action 笔记 --关于AOP(未完成，待研究深入)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/java-multi-thread-chapter1/">Java多线程编程--基础知识总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/spring-in-action-aboutaop/">Spring In Action 笔记 --关于AOP(未完成，待研究深入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/spring-in-action-aboutbean/">Spring In Action 笔记 --关于Bean</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/design-pattern-behavioral-pattern2/">设计模式-行为型模式(状态模式、策略模式、责任链模式、访问者模式、备忘录模式、解释器模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/design-pattern-behavioral-pattern/">设计模式-行为型模式(模板方法模式、命令模式、迭代器模式、观察者模式、中介者模式)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/design-pattern-structured-pattern2/">设计模式-结构型模式2(享元、桥接、装饰)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/get-started-with-Docker/">Docker入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/16/quartz-net-chinese-tutorial-lesson2/">Quartz.NET中文开发指南(二):Jobs And Triggers</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/quartz-net-chinese-tutorial-lesson1/">Quartz.NET中文开发指南(一):快速使用Quartz.NET</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/design-pattern-structured-pattern/">设计模式-结构型模式(适配器、组合、代理、外观)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/design-pattern-creational-pattern/">设计模式-创建型模式(单例、工厂、创建者、原型)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/design-pattern-solid/">设计模式六大原则-SOLID</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/Lagouspider/">程序员拉钩找工作的另类姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/22/oop-in-javascript/">JavaScript面向对象编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/JavaScript的原型链/">JavaScript的原型链</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/JavaScript的this关键字/">JavaScript的this关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/数据库设计规范/">数据库设计规范</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 三流程序猿
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >全站访问数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">文章阅读数: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <style>
+        body {
+          background: lightgray;
+        }
+        #container .left-col {
+          background: white;
+        }
+        .article-inner {
+          background: white;
+          margin-bottom: 1em;
+        }
+        .post-nav-button {
+          background: #ececec;
+        }
+        #header .header-nav .social #GitHub {
+          background-color: #bfd3ec;
+        }
+        #post-nav-button a {
+          background: rgba(215, 216, 215, .2);
+        }
+        .post-list {
+          background: white;
+        }
+    </style>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
